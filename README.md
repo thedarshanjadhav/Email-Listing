@@ -15,5 +15,4 @@ This project is a simple and interactive email client application built using Re
 - **React**: For building the user interface.
 - **Axios**: For making API requests to fetch email data.
 - **Tailwind CSS**: For styling and creating a responsive layout.
-- **React Router**: To manage navigation and display email details dynamically.
 
