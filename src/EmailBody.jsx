@@ -46,6 +46,8 @@ const EmailBody = ({
     fetchEmailBody();
   }, [emailId, onMarkEmailAsRead]);
 
+  if (!emailId || !emailBody) return <h4>Loading</h4>;
+
   // Find the subject from the email list
   const selectedEmail = emailList.find((email) => email.id === emailId);
 

@@ -6,6 +6,7 @@ const EmailList = ({
   filter,
   favorites,
   readEmails,
+  emailId,
   onMarkEmailAsRead,
   onEmailClick,
 }) => {
@@ -71,7 +72,9 @@ const EmailList = ({
           <div
             key={email.id}
             onClick={() => markEmailAsRead(email.id)}
-            className={` border border-[#CFD2DC] rounded-md p-5 cursor-pointer transition-colors ${
+            className={` border ${
+              emailId === email.id ? "border-[#E54065]" : "border-[#CFD2DC]"
+            } rounded-md p-5 cursor-pointer transition-colors ${
               readEmails.includes(email.id) ? "bg-[#F2F2F2]" : "bg-[#F4F5F9]"
             }`}
           >

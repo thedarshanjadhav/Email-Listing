@@ -47,6 +47,7 @@ const App = () => {
             filter={filter}
             favorites={favorites}
             readEmails={readEmails}
+            emailId={selectedEmailId}
             onToggleFavorite={toggleFavorite}
             onMarkEmailAsRead={markEmailAsRead}
             onEmailClick={handleEmailClick}
