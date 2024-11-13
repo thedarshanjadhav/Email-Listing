@@ -1,8 +1,18 @@
-# React + Vite
+# Email Client Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a simple and interactive email client application built using React. It allows users to view a list of emails, filter them based on different criteria, and read the content of individual emails. The project uses the Flipkart Email Mock API for fetching email data and features a user-friendly interface with capabilities like marking emails as favorites and tracking read/unread status.
 
-Currently, two official plugins are available:
+## Features
+- **Email List View**: Displays emails with the sender’s name, subject, short description, and date.
+- **Filter Options**: Filter emails by "All," "Unread," "Read," or "Favorites."
+- **Email Details**: Click on an email to view its complete body with rich content.
+- **Mark as Favorite**: Toggle emails as favorite and highlight them with a special style.
+- **Mark as Read**: Automatically mark emails as read when opened.
+- **Pagination**: Navigate through pages of emails with intuitive pagination controls.
+- **Responsive UI**: The design is responsive and adjusts well to different screen sizes.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Technologies Used
+- **React**: For building the user interface.
+- **Axios**: For making API requests to fetch email data.
+- **Tailwind CSS**: For styling and creating a responsive layout.
+
