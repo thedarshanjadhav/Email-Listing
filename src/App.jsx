@@ -38,34 +38,36 @@ const App = () => {
   };
 
   return (
-    <div className="h-screen flex px-5">
+    <div className="h-screen  px-5">
+      <EmailFilter onFilterChange={handleFilterChange} />
       {/* Master: Email List with Filter */}
-      <div className="w-1/2 p-5">
-        <EmailFilter onFilterChange={handleFilterChange} />
-        <EmailList
-          filter={filter}
-          favorites={favorites}
-          readEmails={readEmails}
-          onToggleFavorite={toggleFavorite}
-          onMarkEmailAsRead={markEmailAsRead}
-          onEmailClick={handleEmailClick}
-        />
-      </div>
-
-      {/* Slave: Email Body */}
-      <div className="w-2/3 p-5">
-        {selectedEmailId ? (
-          <EmailBody
-            emailId={selectedEmailId}
+      <div className="flex">
+        <div className="w-1/2 p-5">
+          <EmailList
+            filter={filter}
             favorites={favorites}
+            readEmails={readEmails}
             onToggleFavorite={toggleFavorite}
             onMarkEmailAsRead={markEmailAsRead}
+            onEmailClick={handleEmailClick}
           />
-        ) : (
-          <div className="text-center text-lg text-gray-500">
-            Select an email to view its details
-          </div>
-        )}
+        </div>
+
+        {/* Slave: Email Body */}
+        <div className="w-2/3 p-5 ">
+          {selectedEmailId ? (
+            <EmailBody
+              emailId={selectedEmailId}
+              favorites={favorites}
+              onToggleFavorite={toggleFavorite}
+              onMarkEmailAsRead={markEmailAsRead}
+            />
+          ) : (
+            <div className="text-center text-lg text-[#636363]">
+              Select an email to view its details
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

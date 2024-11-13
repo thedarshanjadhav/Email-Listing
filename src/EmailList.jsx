@@ -6,7 +6,6 @@ const EmailList = ({
   filter,
   favorites,
   readEmails,
-  onToggleFavorite,
   onMarkEmailAsRead,
   onEmailClick,
 }) => {
@@ -62,7 +61,7 @@ const EmailList = ({
   const isFavorite = (id) => favorites.includes(id);
 
   return (
-    <div className="email-list space-y-5">
+    <div className="email-list space-y-5 text-[#636363]">
       {currentEmails.length === 0 ? (
         <div className="text-center text-lg text-gray-500">
           No emails found for this filter.
@@ -72,12 +71,12 @@ const EmailList = ({
           <div
             key={email.id}
             onClick={() => markEmailAsRead(email.id)}
-            className={` border border-orange-400 rounded-md p-5 hover:bg-gray-300 text-black cursor-pointer transition-colors ${
-              readEmails.includes(email.id) ? "bg-slate-50" : "bg-slate-300"
+            className={` border border-[#CFD2DC] rounded-md p-5 cursor-pointer transition-colors ${
+              readEmails.includes(email.id) ? "bg-[#F2F2F2]" : "bg-[#F4F5F9]"
             }`}
           >
             <div className="flex gap-5 items-center">
-              <div className="w-12 h-12 border-2 border-gray-300 rounded-full flex items-center justify-center text-xl font-bold bg-orange-400 text-gray-800">
+              <div className="w-12 h-12 border-2 border-gray-300 rounded-full flex items-center justify-center text-xl font-bold bg-[#E54065] text-white">
                 {email.from ? email.from.name.charAt(0) : "NA"}
               </div>
               <div className="flex-1">
@@ -85,26 +84,29 @@ const EmailList = ({
                   From:{" "}
                   <span className="font-medium">
                     {email.from ? email.from.name : "Unknown"}
+                  </span>{" "}
+                  <span className="font-medium">
+                    &lt;{email.from ? email.from.email : "Unknown"}&gt;
                   </span>
                 </div>
-                <h4 className="text-lg font-semibold">{email.subject}</h4>
-                <p className="text-sm">{email.short_description}</p>
-                <span className="text-xs text-black-400">
-                  {new Date(email.date).toLocaleString()}
-                </span>
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation(); // Prevent triggering `markEmailAsRead`
-                    onToggleFavorite(email.id);
-                  }}
-                  className={`m-2 p-1 rounded-md text-sm text-white ${
-                    isFavorite(email.id) ? "bg-red-500" : "bg-blue-500"
-                  }`}
-                >
-                  {isFavorite(email.id)
-                    ? "Unmark as Favorite"
-                    : "Mark as Favorite"}
-                </button>
+                <div className="text-sm">
+                  Subject: <span className="font-medium">{email.subject}</span>
+                </div>
+
+                <p className="text-sm my-1">{email.short_description}</p>
+                <div className="flex text-sm gap-2">
+                  <span className="text-sm">
+                    {new Date(email.date).toLocaleString()}
+                  </span>
+
+                  {isFavorite(email.id) ? (
+                    <p className="text-sm font-medium text-[#E54065]">
+                      Favorite
+                    </p>
+                  ) : (
+                    ""
+                  )}
+                </div>
               </div>
             </div>
           </div>
@@ -116,7 +118,7 @@ const EmailList = ({
         <button
           onClick={() => paginate(currentPage - 1)}
           disabled={currentPage === 1}
-          className="p-2 mx-2 bg-blue-500 text-white rounded-md disabled:bg-gray-300"
+          className="p-2 mx-2 bg-[#E1E4EA] border border-[#CFD2DC] rounded-md disabled:bg-[#F4F5F9]"
         >
           Previous
         </button>
@@ -125,9 +127,7 @@ const EmailList = ({
             key={index}
             onClick={() => paginate(index + 1)}
             className={`p-2 mx-2 ${
-              currentPage === index + 1
-                ? "bg-blue-700 text-white"
-                : "bg-blue-500 text-white"
+              currentPage === index + 1 ? "bg-[#E1E4EA] " : "bg-[#F4F5F9]"
             } rounded-md`}
           >
             {index + 1}
@@ -136,7 +136,7 @@ const EmailList = ({
         <button
           onClick={() => paginate(currentPage + 1)}
           disabled={currentPage === totalPages}
-          className="p-2 mx-2 bg-blue-500 text-white rounded-md disabled:bg-gray-300"
+          className="p-2 mx-2 bg-[#E1E4EA] border border-[#CFD2DC] rounded-md disabled:bg-[#F4F5F9]"
         >
           Next
         </button>
